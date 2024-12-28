@@ -1,5 +1,5 @@
 # Prerequisites
-build/
-install/
+/build/
+/install/
 **/.DS_Store
 **/Thumbs.db
