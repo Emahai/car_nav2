@@ -7,9 +7,9 @@ This project is for personal learning purposes only. If there are any copyright 
 
 You need to do this:
 
-1. Run the following command to clone the car_nav2 repository to your local machine:
+1.Run the following command to clone the car_nav2 repository to your local machine:
 
-   git clone https://github.com/2024828/car_nav2.git
+      git clone https://github.com/2024828/car_nav2.git
 
 2.The file uses some Gazebo models, which you can download from:https://drive.google.com/file/d/1tcfoLFReEW1XNHPUAeLpIz2iZXqQBvo_/view.
 
