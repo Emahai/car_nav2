@@ -33,6 +33,7 @@ If you don't need this, you can comment out the line  `launchDescriptionObject.a
 
 Open a new terminal and run:
     
+    export GZ_SIM_RESOURCE_PATH=~/gazebo_models
     .install/setup.bash
     ros2 launch car_nav2 navigation_with_slam.launch.py
 
