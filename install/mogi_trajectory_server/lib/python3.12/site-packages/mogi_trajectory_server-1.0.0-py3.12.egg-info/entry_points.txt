@@ -1,2 +1,0 @@
-[console_scripts]
-mogi_trajectory_server = mogi_trajectory_server.trajectory:main

@@ -1,8 +1,0 @@
-Metadata-Version: 2.1
-Name: mogi-trajectory-server
-Version: 1.0.0
-Summary: ROS2 trajectory server
-Maintainer: David Dudas
-Maintainer-email: david.dudas@outlook.com
-License: Apache License 2.0
-License-File: LICENSE

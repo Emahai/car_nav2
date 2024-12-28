@@ -1,1 +1,0 @@
-mogi_trajectory_server
