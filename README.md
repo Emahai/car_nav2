@@ -29,11 +29,11 @@ If you don't need this, you can comment out the line  `launchDescriptionObject.a
     
     colcon build
     .install/setup.bash
-    ros2 launch spawn_robot.launch.py
+    ros2 launch car_nav2 spawn_robot.launch.py
 
 Open a new terminal and run:
     
     .install/setup.bash
-    ros2 launch navigation_with_slam.launch.py
+    ros2 launch car_nav2 navigation_with_slam.launch.py
 
 You can use the `2D goal pose` in the RViz2 toolbar to control the robot's movement and mapping. The robot will automatically plan the path.
