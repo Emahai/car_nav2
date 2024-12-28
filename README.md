@@ -7,4 +7,5 @@ This project is for personal learning purposes only. If there are any copyright 
 
 You need to do this:
 
-1.git clone 
+  1.Run the following command to clone the car_nav2 repository to your local machine:
+  'git clone https://github.com/2024828/car_nav2.git'
