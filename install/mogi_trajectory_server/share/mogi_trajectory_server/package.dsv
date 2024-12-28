@@ -1,0 +1,6 @@
+source;share/mogi_trajectory_server/hook/pythonpath.ps1
+source;share/mogi_trajectory_server/hook/pythonpath.dsv
+source;share/mogi_trajectory_server/hook/pythonpath.sh
+source;share/mogi_trajectory_server/hook/ament_prefix_path.ps1
+source;share/mogi_trajectory_server/hook/ament_prefix_path.dsv
+source;share/mogi_trajectory_server/hook/ament_prefix_path.sh

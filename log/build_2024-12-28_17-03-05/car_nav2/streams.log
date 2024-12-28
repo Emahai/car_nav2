@@ -1,0 +1,77 @@
+[0.030s] Invoking command in '/home/qu/car_nav2/build/car_nav2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/qu/car_nav2/src -DCMAKE_INSTALL_PREFIX=/home/qu/car_nav2/install/car_nav2
+[0.163s] -- The C compiler identification is GNU 13.3.0
+[0.302s] -- The CXX compiler identification is GNU 13.3.0
+[0.347s] -- Detecting C compiler ABI info
+[0.565s] -- Detecting C compiler ABI info - done
+[0.584s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.586s] -- Detecting C compile features
+[0.586s] -- Detecting C compile features - done
+[0.609s] -- Detecting CXX compiler ABI info
+[0.837s] -- Detecting CXX compiler ABI info - done
+[0.864s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.864s] -- Detecting CXX compile features
+[0.865s] -- Detecting CXX compile features - done
+[0.872s] -- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[1.306s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.617s] -- Found ament_lint_auto: 0.17.1 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[1.916s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.916s] -- Configured cppcheck include dirs: 
+[1.916s] -- Configured cppcheck exclude dirs and/or files: 
+[1.919s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.920s] -- Configured 'flake8' exclude dirs and/or files: 
+[1.927s] -- Added test 'lint_cmake' to check CMake code style
+[1.932s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.955s] -- Added test 'uncrustify' to check C / C++ code style
+[1.955s] -- Configured uncrustify additional arguments: 
+[1.960s] -- Added test 'xmllint' to check XML markup files
+[1.965s] -- Configuring done (1.9s)
+[1.969s] -- Generating done (0.0s)
+[1.974s] -- Build files have been written to: /home/qu/car_nav2/build/car_nav2
+[1.985s] Invoked command in '/home/qu/car_nav2/build/car_nav2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/qu/car_nav2/src -DCMAKE_INSTALL_PREFIX=/home/qu/car_nav2/install/car_nav2
+[1.988s] Invoking command in '/home/qu/car_nav2/build/car_nav2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/qu/car_nav2/build/car_nav2 -- -j12 -l12
+[2.069s] Invoked command in '/home/qu/car_nav2/build/car_nav2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/qu/car_nav2/build/car_nav2 -- -j12 -l12
+[2.091s] Invoking command in '/home/qu/car_nav2/build/car_nav2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/qu/car_nav2/build/car_nav2
+[2.120s] -- Install configuration: ""
+[2.121s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/launch
+[2.122s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/launch/navigation_with_slam.launch.py
+[2.122s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/launch/world.launch.py
+[2.123s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/launch/spawn_robot.launch.py
+[2.123s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/worlds
+[2.123s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/worlds/home.sdf
+[2.123s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/rviz
+[2.123s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/rviz/navigation.rviz
+[2.124s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/rviz/mapping.rviz
+[2.124s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/rviz/rviz.rviz
+[2.125s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/rviz/urdf.rviz
+[2.125s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/rviz/localization.rviz
+[2.126s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/urdf
+[2.126s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/urdf/mycar.gazebo
+[2.127s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/urdf/mycar.urdf
+[2.127s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/urdf/materials.xacro
+[2.128s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/meshes
+[2.128s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/meshes/mycar.dae
+[2.129s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/meshes/wheel.dae
+[2.130s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/meshes/lidar.dae
+[2.130s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/config
+[2.131s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/config/slam_toolbox_localization.yaml
+[2.132s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/config/gz_bridge.yaml
+[2.132s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/config/slam_toolbox_mapping.yaml
+[2.133s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/config/ekf.yaml
+[2.134s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/config/navigation.yaml
+[2.134s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/config/amcl_localization.yaml
+[2.135s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/ament_index/resource_index/package_run_dependencies/car_nav2
+[2.135s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/ament_index/resource_index/parent_prefix_path/car_nav2
+[2.135s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/environment/ament_prefix_path.sh
+[2.136s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/environment/ament_prefix_path.dsv
+[2.136s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/environment/path.sh
+[2.136s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/environment/path.dsv
+[2.137s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/local_setup.bash
+[2.137s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/local_setup.sh
+[2.138s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/local_setup.zsh
+[2.138s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/local_setup.dsv
+[2.139s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/package.dsv
+[2.139s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/ament_index/resource_index/packages/car_nav2
+[2.139s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/cmake/car_nav2Config.cmake
+[2.139s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/cmake/car_nav2Config-version.cmake
+[2.139s] -- Installing: /home/qu/car_nav2/install/car_nav2/share/car_nav2/package.xml
+[2.145s] Invoked command in '/home/qu/car_nav2/build/car_nav2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/qu/car_nav2/build/car_nav2

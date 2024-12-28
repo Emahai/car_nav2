@@ -1,0 +1,20 @@
+running egg_info
+writing ../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/PKG-INFO
+writing dependency_links to ../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/dependency_links.txt
+writing entry points to ../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/entry_points.txt
+writing requirements to ../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/requires.txt
+writing top-level names to ../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/top_level.txt
+reading manifest file '../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/home/qu/car_nav2/install/mogi_trajectory_server/lib/python3.12/site-packages/mogi_trajectory_server-1.0.0-py3.12.egg-info' (and everything under it)
+Copying ../build/mogi_trajectory_server/mogi_trajectory_server.egg-info to /home/qu/car_nav2/install/mogi_trajectory_server/lib/python3.12/site-packages/mogi_trajectory_server-1.0.0-py3.12.egg-info
+running install_scripts
+Installing mogi_trajectory_server script to /home/qu/car_nav2/install/mogi_trajectory_server/lib/mogi_trajectory_server
+writing list of installed files to '/home/qu/car_nav2/build/mogi_trajectory_server/install.log'

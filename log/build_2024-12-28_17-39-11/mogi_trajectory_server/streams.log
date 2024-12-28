@@ -1,0 +1,22 @@
+[2.142s] Invoking command in '/home/qu/car_nav2/mogi_trajectory_server': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/qu/car_nav2/build/mogi_trajectory_server/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/qu/car_nav2/install/mogi_trajectory_server/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/mogi_trajectory_server build --build-base /home/qu/car_nav2/build/mogi_trajectory_server/build install --record /home/qu/car_nav2/build/mogi_trajectory_server/install.log --single-version-externally-managed install_data
+[2.823s] running egg_info
+[2.880s] writing ../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/PKG-INFO
+[2.880s] writing dependency_links to ../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/dependency_links.txt
+[2.881s] writing entry points to ../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/entry_points.txt
+[2.881s] writing requirements to ../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/requires.txt
+[2.882s] writing top-level names to ../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/top_level.txt
+[2.985s] reading manifest file '../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/SOURCES.txt'
+[2.985s] adding license file 'LICENSE'
+[2.987s] writing manifest file '../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/SOURCES.txt'
+[2.987s] running build
+[2.987s] running build_py
+[2.988s] running install
+[3.001s] running install_lib
+[3.053s] running install_data
+[3.053s] running install_egg_info
+[3.110s] removing '/home/qu/car_nav2/install/mogi_trajectory_server/lib/python3.12/site-packages/mogi_trajectory_server-1.0.0-py3.12.egg-info' (and everything under it)
+[3.111s] Copying ../build/mogi_trajectory_server/mogi_trajectory_server.egg-info to /home/qu/car_nav2/install/mogi_trajectory_server/lib/python3.12/site-packages/mogi_trajectory_server-1.0.0-py3.12.egg-info
+[3.113s] running install_scripts
+[3.434s] Installing mogi_trajectory_server script to /home/qu/car_nav2/install/mogi_trajectory_server/lib/mogi_trajectory_server
+[3.436s] writing list of installed files to '/home/qu/car_nav2/build/mogi_trajectory_server/install.log'
+[3.499s] Invoked command in '/home/qu/car_nav2/mogi_trajectory_server' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/qu/car_nav2/build/mogi_trajectory_server/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/qu/car_nav2/install/mogi_trajectory_server/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/mogi_trajectory_server build --build-base /home/qu/car_nav2/build/mogi_trajectory_server/build install --record /home/qu/car_nav2/build/mogi_trajectory_server/install.log --single-version-externally-managed install_data

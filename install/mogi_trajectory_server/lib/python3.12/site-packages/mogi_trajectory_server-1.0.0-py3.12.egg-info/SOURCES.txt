@@ -1,0 +1,15 @@
+LICENSE
+README.md
+package.xml
+setup.cfg
+setup.py
+../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/PKG-INFO
+../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/SOURCES.txt
+../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/dependency_links.txt
+../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/entry_points.txt
+../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/requires.txt
+../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/top_level.txt
+../build/mogi_trajectory_server/mogi_trajectory_server.egg-info/zip-safe
+mogi_trajectory_server/__init__.py
+mogi_trajectory_server/trajectory.py
+resource/mogi_trajectory_server
