@@ -7,11 +7,11 @@ This project is for personal learning purposes only. If there are any copyright 
 
 You need to do this:
 
-  1. Run the following command to clone the car_nav2 repository to your local machine:
-    git clone https://github.com/2024828/car_nav2.git
+1. Run the following command to clone the car_nav2 repository to your local machine:
 
-  2.The file uses some Gazebo models, which you can download from:https://drive.google.com/file/d/1tcfoLFReEW1XNHPUAeLpIz2iZXqQBvo_/view.
+   git clone https://github.com/2024828/car_nav2.git
 
+2.The file uses some Gazebo models, which you can download from:https://drive.google.com/file/d/1tcfoLFReEW1XNHPUAeLpIz2iZXqQBvo_/view.
 
 If you want to learn more about Gazebo models, please visit:https://github.com/MOGI-ROS/Week-3-4-Gazebo-basics.
 
@@ -20,16 +20,19 @@ Make sure to let Gazebo know about their location by running:
     export GZ_SIM_RESOURCE_PATH=~/gazebo_models
 
 3.Download a package in the `car_nav2` folder that can enable the recording of the robot's motion path.
+    
     git clone https://github.com/MOGI-ROS/mogi_trajectory_server
 
 If you don't need this, you can comment out the line  `launchDescriptionObject.add_action(trajectory_node)`  at the end of the `navigation_with_slam.launch.py` file.
 
 4.Build the package and run:
+    
     colcon build
     .install/setup.bash
     ros2 launch spawn_robot.launch.py
 
 Open a new terminal and run:
+    
     .install/setup.bash
     ros2 launch navigation_with_slam.launch.py
 
