@@ -1,83 +1,65 @@
-### ekf config file ###
-ekf_filter_node:
-    ros__parameters:
-# The frequency, in Hz, at which the filter will output a position estimate. Note that the filter will not begin
-# computation until it receives at least one message from one of theinputs. It will then run continuously at the
-# frequency specified here, regardless of whether it receives more measurements. Defaults to 30 if unspecified.
-        frequency: 30.0
+### ekf 配置文件 ###
 
-# ekf_localization_node and ukf_localization_node both use a 3D omnidirectional motion model. If this parameter is
-# set to true, no 3D information will be used in your state estimate. Use this if you are operating in a planar
-# environment and want to ignore the effect of small variations in the ground plane that might otherwise be detected
-# by, for example, an IMU. Defaults to false if unspecified.
-        two_d_mode: true
+ekf_filter_node:  # EKF滤波器节点的配置
+        ros__parameters:  # ROS参数设置
+        # 设置滤波器输出位置估计的频率（单位：Hz）。注意，在接收到至少一个输入消息后，滤波器才会开始计算，
+        # 然后会以指定的频率持续运行，不论是否收到更多的测量值。如果未指定，默认为30Hz。
+        frequency: 30.0  # 输出估计频率，单位：Hz
 
-# Whether to publish the acceleration state. Defaults to false if unspecified.
-        publish_acceleration: false
+        # ekf_localization_node 和 ukf_localization_node 都使用3D全向运动模型。 
+        # 如果设置为true，则不会使用任何3D信息进行状态估计。如果你在平面环境中操作并且希望忽略地面微小变化的影响（例如IMU检测的变化），可以将此参数设置为true。
+        # 默认值是false，即使用3D信息进行估计。
+        two_d_mode: true  # 是否使用二维模式，默认值为false，表示使用三维信息
 
-# Whether to broadcast the transformation over the /tf topic. Defaultsto true if unspecified.
-        publish_tf: true
+        # 是否发布加速度状态。如果未指定，默认为false。
+        publish_acceleration: false  # 是否发布加速度状态
 
-# 1. Set the map_frame, odom_frame, and base_link frames to the appropriate frame names for your system.
-#     1a. If your system does not have a map_frame, just remove it, and make sure "world_frame" is set to the value of odom_frame.
-# 2. If you are fusing continuous position data such as wheel encoder odometry, visual odometry, or IMU data, set "world_frame"
-#    to your odom_frame value. This is the default behavior for robot_localization's state estimation nodes.
-# 3. If you are fusing global absolute position data that is subject to discrete jumps (e.g., GPS or position updates from landmark
-#    observations) then:
-#     3a. Set your "world_frame" to your map_frame value
-#     3b. MAKE SURE something else is generating the odom->base_link transform. Note that this can even be another state estimation node
-#         from robot_localization! However, that instance should *not* fuse the global data.
-        map_frame: map              # Defaults to "map" if unspecified
-        odom_frame: odom            # Defaults to "odom" if unspecified
-        base_link_frame: base_footprint  # Defaults to "base_link" ifunspecified
-        world_frame: odom           # Defaults to the value of odom_frame if unspecified
+        # 是否广播坐标变换信息到 /tf 话题。如果未指定，默认为true。
+        publish_tf: true  # 是否广播tf变换信息
 
-        odom0: odom
-        odom0_config: [false, false,  false,
-                       false, false, false,
-                       true, true, false,
-                       false, false, true,
-                       false, false, false]
+        # 设置 map_frame、odom_frame 和 base_link_frame 为适合系统的坐标系名称。
+        # 如果系统没有 map_frame，去掉该配置，并确保 "world_frame" 设置为 odom_frame 的值。
+        # 如果融合了连续的位置信息，如轮编码器的里程计、视觉里程计或IMU数据，设置 "world_frame" 为 odom_frame 的值（默认行为）。
+        # 如果融合了全局绝对位置数据（如GPS或基于地标的位置信息），并且这些数据可能出现离散跳跃：
+        #  1. 设置 "world_frame" 为 map_frame 的值
+        #  2. 确保有其他机制生成 odom->base_link 变换，可以是另一个状态估计节点，但该节点不能融合全局数据。
+        map_frame: map  # 地图坐标系的名称，默认为 "map"
+        odom_frame: odom  # 里程计坐标系的名称，默认为 "odom"
+        base_link_frame: base_footprint  # 机器人本体坐标系的名称，默认为 "base_link"
+        world_frame: odom  # 世界坐标系的名称，默认为 "odom" 
 
-        imu0: imu
-        imu0_config: [false, false, false,
-                      true,  true,  true,
-                      false, false, false,
-                      false,  false,  true,
-                      true,  false,  false]
-                      
-        imu0_differential: false
-       
+        # 输入消息配置。以下是里程计和IMU数据的相关设置。
+        odom0: odom  # 里程计输入数据话题
+        odom0_config: [false, false, false,   # 不使用 x, y, z 位置数据
+                        false, false, false,   # 不使用 roll, pitch, yaw 姿态数据
+                        true, true, false,     # 使用 vx, vy 速度数据
+                        false, false, true,    # 使用 vz, vroll, vpitch, vyaw 速度数据
+                        false, false, false]   # 不使用 ax, ay, az 加速度数据
 
-        # [ADVANCED] The process noise covariance matrix can be difficult to tune, and can vary for each application, so it is
-        # exposed as a configuration parameter. This matrix represents the noise we add to the total error after each
-        # prediction step. The better the omnidirectional motion model matches your system, the smaller these values can be.
-        # However, if users find that a given variable is slow to converge, one approach is to increase the
-        # process_noise_covariance diagonal value for the variable in question, which will cause the filter's predicted error
-        # to be larger, which will cause the filter to trust the incoming measurement more during correction. The values are
-        # ordered as x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az. Defaults to the matrix below if
-        # unspecified.
-        # Note: the specification of covariance matrices can be cumbersome, so all matrix parameters in this package support
-        # both full specification or specification of only the diagonal values.
+        imu0: imu  # IMU输入数据话题
+        imu0_config: [false, false, false,   # 不使用 x, y, z 位置数据
+                        true, true, true,      # 使用 roll, pitch, yaw 姿态数据
+                        false, false, false,   # 不使用 vx, vy, vz 速度数据
+                        false, false, true,    # 使用 vroll, vpitch, vyaw 速度数据
+                        true, false, false]    # 使用 ax, ay, az 加速度数据
+                        
+        imu0_differential: false  # 是否启用IMU数据差分模式。默认值为false。
+
+        # [高级] 过程噪声协方差矩阵。该矩阵用于表示每次预测步骤后添加的噪声，用于调整误差估计。
+        # 如果模型能很好地匹配系统运动，通常可以将这些值调小。但如果某个变量收敛较慢，可以适当增大该变量的过程噪声，以便在修正时对测量数据更加信任。
+        # 协方差矩阵值的顺序为：x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az
         process_noise_covariance: [0.05, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                   0.0,    0.05, 0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                   0.0,    0.0,    0.06, 0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                   0.0,    0.0,    0.0,    0.03, 0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                   0.0,    0.0,    0.0,    0.0,    0.03, 0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                   0.0,    0.0,    0.0,    0.0,    0.0,    0.06, 0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.025, 0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.025, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.04, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
-                                   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.01, 0.0,    0.0,    0.0,    0.0,    0.0,
-                                   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.01, 0.0,    0.0,    0.0,    0.0,
-                                   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.02, 0.0,    0.0,    0.0,
-                                   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.01, 0.0,    0.0,
-                                   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.01, 0.0,
-                                   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.015]
+                                0.0,    0.05, 0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.06, 0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.03, 0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.03, 0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.06, 0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.025, 0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.025, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.04, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.01, 0.0,    0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.01, 0.0,    0.0,    0.0,    0.0,
+                                0.0,    0.0,    0.0,    0.0,    0.0,    0.0]  # 设置各项过程噪声协方差
 
-        # [ADVANCED] This represents the initial value for the state estimate error covariance matrix. Setting a diagonal
-        # value (variance) to a large value will result in rapid convergence for initial measurements of the variable in
-        # question. Users should take care not to use large values for variables that will not be measured directly. The values
-        # are ordered as x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az. Defaults to the diagonal values below
-        # if unspecified. In this example, we specify only the diagonal of the matrix.
+  
         initial_estimate_covariance: [1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9, 1e-9]

@@ -1,75 +1,68 @@
 slam_toolbox:
   ros__parameters:
 
-    # Plugin params
-    solver_plugin: solver_plugins::CeresSolver
-    ceres_linear_solver: SPARSE_NORMAL_CHOLESKY
-    ceres_preconditioner: SCHUR_JACOBI
-    ceres_trust_strategy: LEVENBERG_MARQUARDT
-    ceres_dogleg_type: TRADITIONAL_DOGLEG
-    ceres_loss_function: None
+    # 插件参数
+    solver_plugin: solver_plugins::CeresSolver  # 使用的求解器插件，CeresSolver用于非线性最小二乘优化
+    ceres_linear_solver: SPARSE_NORMAL_CHOLESKY  # Ceres求解器的线性求解方法，使用稀疏矩阵的正态Cholesky分解
+    ceres_preconditioner: SCHUR_JACOBI  # 预条件器类型，使用Schur-Jacobi预条件器
+    ceres_trust_strategy: LEVENBERG_MARQUARDT  # Ceres的信任区域策略，使用Levenberg-Marquardt方法
+    ceres_dogleg_type: TRADITIONAL_DOGLEG  # Ceres的Dogleg类型，选择传统的Dogleg方法
+    ceres_loss_function: None  # 损失函数，设置为None表示不使用特殊的损失函数
 
-    # ROS Parameters
-    odom_frame: odom
-    map_frame: map
-    base_frame: base_footprint
-    scan_topic: /scan
-    use_map_saver: true
-    mode: mapping #localization
+    # ROS参数
+    odom_frame: odom  # 里程计坐标系的名称，指定机器人在ROS中的odom坐标系
+    map_frame: map  # 地图坐标系的名称，指定机器人在ROS中的地图坐标系
+    base_frame: base_footprint  # 基础坐标系的名称，通常是机器人底盘的坐标系
+    scan_topic: /scan  # 激光扫描数据的ROS话题名称，机器人激光雷达数据流
+    use_map_saver: true  # 是否启用地图保存功能，若为true，则会保存地图
+    mode: mapping  # 模式选择，'mapping'表示地图构建，'localization'表示定位模式
 
-    # if you'd like to immediately start continuing a map at a given pose
-    # or at the dock, but they are mutually exclusive, if pose is given
-    # will use pose
-    #map_file_name: test_steve
-    # map_start_pose: [0.0, 0.0, 0.0]
-    #map_start_at_dock: true
+    debug_logging: true  # 启用调试日志，便于调试过程中查看详细信息
+    throttle_scans: 1  # 扫描频率限制，控制扫描的频率
+    transform_publish_period: 0.02  # 变换发布周期，单位为秒，设置为0则不发布里程计信息
+    map_update_interval: 5.0  # 地图更新周期，单位为秒，决定地图的更新频率
+    resolution: 0.05  # 地图分辨率，单位为米，定义每个网格的大小
+    min_laser_range: 0.0  # 激光最小测量范围，用于图像栅格化处理
+    max_laser_range: 20.0  # 激光最大测量范围，用于图像栅格化处理
+    minimum_time_interval: 0.5  # 最小时间间隔，限制扫描的时间间隔
+    transform_timeout: 0.2  # 变换超时时间，单位为秒，控制变换的等待时间
+    tf_buffer_duration: 30.0  # TF缓冲区的持续时间，单位为秒，用于存储坐标变换信息
+    stack_size_to_use: 40000000  # 需要更大的栈大小来序列化大型地图
+    enable_interactive_mode: true  # 启用交互模式，允许手动控制地图构建过程
 
-    debug_logging: true
-    throttle_scans: 1
-    transform_publish_period: 0.02 #if 0 never publishes odometry
-    map_update_interval: 5.0
-    resolution: 0.05
-    min_laser_range: 0.0 #for rastering images
-    max_laser_range: 20.0 #for rastering images
-    minimum_time_interval: 0.5
-    transform_timeout: 0.2
-    tf_buffer_duration: 30.0
-    stack_size_to_use: 40000000 #// program needs a larger stack size to serialize large maps
-    enable_interactive_mode: true
+    # 一般参数
+    use_scan_matching: true  # 启用扫描匹配功能，用于根据激光数据与地图对齐
+    use_scan_barycenter: true  # 启用扫描重心匹配
+    minimum_travel_distance: 0.5  # 最小旅行距离，单位为米，机器人在开始定位之前的最小移动距离
+    minimum_travel_heading: 0.5  # 最小航向角变化，单位为弧度，用于启动定位
+    scan_buffer_size: 10  # 扫描缓存的大小，用于存储历史扫描数据
+    scan_buffer_maximum_scan_distance: 10.0  # 扫描缓存的最大扫描距离，单位为米
+    link_match_minimum_response_fine: 0.1  # 精细匹配的最小响应值，用于决定是否匹配成功
+    link_scan_maximum_distance: 1.5  # 链接扫描的最大匹配距离，单位为米
+    loop_search_maximum_distance: 3.0  # 循环搜索的最大匹配距离，单位为米
+    do_loop_closing: true  # 是否启用回环闭合功能
+    loop_match_minimum_chain_size: 10  # 回环匹配的最小链长度，控制匹配的精度
+    loop_match_maximum_variance_coarse: 3.0  # 粗匹配的最大方差，用于回环闭合
+    loop_match_minimum_response_coarse: 0.35  # 粗匹配的最小响应值，用于回环闭合
+    loop_match_minimum_response_fine: 0.45  # 精细匹配的最小响应值，用于回环闭合
 
-    # General Parameters
-    use_scan_matching: true
-    use_scan_barycenter: true
-    minimum_travel_distance: 0.5
-    minimum_travel_heading: 0.5
-    scan_buffer_size: 10
-    scan_buffer_maximum_scan_distance: 10.0
-    link_match_minimum_response_fine: 0.1  
-    link_scan_maximum_distance: 1.5
-    loop_search_maximum_distance: 3.0
-    do_loop_closing: true 
-    loop_match_minimum_chain_size: 10           
-    loop_match_maximum_variance_coarse: 3.0  
-    loop_match_minimum_response_coarse: 0.35    
-    loop_match_minimum_response_fine: 0.45
+    # 相关参数 - 相关参数
+    correlation_search_space_dimension: 0.5  # 相关搜索空间的维度，单位为米
+    correlation_search_space_resolution: 0.01  # 相关搜索空间的分辨率，单位为米
+    correlation_search_space_smear_deviation: 0.1  # 相关搜索空间的偏差，控制搜索的灵敏度
 
-    # Correlation Parameters - Correlation Parameters
-    correlation_search_space_dimension: 0.5
-    correlation_search_space_resolution: 0.01
-    correlation_search_space_smear_deviation: 0.1 
+    # 相关参数 - 回环闭合参数
+    loop_search_space_dimension: 8.0  # 回环闭合搜索空间的维度，单位为米
+    loop_search_space_resolution: 0.05  # 回环闭合搜索空间的分辨率，单位为米
+    loop_search_space_smear_deviation: 0.03  # 回环闭合搜索空间的偏差，控制回环匹配的灵敏度
 
-    # Correlation Parameters - Loop Closure Parameters
-    loop_search_space_dimension: 8.0
-    loop_search_space_resolution: 0.05
-    loop_search_space_smear_deviation: 0.03
+    # 扫描匹配器参数
+    distance_variance_penalty: 0.5  # 距离方差惩罚，控制距离匹配的权重
+    angle_variance_penalty: 1.0  # 角度方差惩罚，控制角度匹配的权重
 
-    # Scan Matcher Parameters
-    distance_variance_penalty: 0.5      
-    angle_variance_penalty: 1.0    
-
-    fine_search_angle_offset: 0.00349     
-    coarse_search_angle_offset: 0.349   
-    coarse_angle_resolution: 0.0349        
-    minimum_angle_penalty: 0.9
-    minimum_distance_penalty: 0.5
-    use_response_expansion: true
+    fine_search_angle_offset: 0.00349  # 精细搜索的角度偏移量，单位为弧度
+    coarse_search_angle_offset: 0.349  # 粗搜索的角度偏移量，单位为弧度
+    coarse_angle_resolution: 0.0349  # 粗搜索的角度分辨率，单位为弧度
+    minimum_angle_penalty: 0.9  # 最小角度惩罚，用于匹配结果的惩罚
+    minimum_distance_penalty: 0.5  # 最小距离惩罚，用于匹配结果的惩罚
+    use_response_expansion: true  # 是否启用响应扩展功能，增加匹配的响应区域

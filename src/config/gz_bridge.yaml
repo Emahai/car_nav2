@@ -1,41 +1,41 @@
-- ros_topic_name: "clock"
-  gz_topic_name: "clock"
-  ros_type_name: "rosgraph_msgs/msg/Clock"
-  gz_type_name: "gz.msgs.Clock"
-  direction: "GZ_TO_ROS"
+- ros_topic_name: "clock"  # ROS话题名称，通常用于同步模拟和ROS时钟
+  gz_topic_name: "clock"  # Gazebo话题名称，Gazebo中的时钟话题
+  ros_type_name: "rosgraph_msgs/msg/Clock"  # ROS消息类型，用于表示时钟
+  gz_type_name: "gz.msgs.Clock"  # Gazebo消息类型，用于表示时钟
+  direction: "GZ_TO_ROS"  # 数据传输方向，"GZ_TO_ROS"表示从Gazebo到ROS
 
-- ros_topic_name: "joint_states"
-  gz_topic_name: "joint_states"
-  ros_type_name: "sensor_msgs/msg/JointState"
-  gz_type_name: "gz.msgs.Model"
-  direction: "GZ_TO_ROS"
+- ros_topic_name: "joint_states"  # ROS话题名称，表示机器人的关节状态
+  gz_topic_name: "joint_states"  # Gazebo话题名称，表示机器人的关节状态
+  ros_type_name: "sensor_msgs/msg/JointState"  # ROS消息类型，用于表示关节状态（如位置、速度、力矩等）
+  gz_type_name: "gz.msgs.Model"  # Gazebo消息类型，用于表示模型的状态（此处是关节相关信息）
+  direction: "GZ_TO_ROS"  # 数据传输方向，"GZ_TO_ROS"表示从Gazebo到ROS
 
-- ros_topic_name: "odom"
-  gz_topic_name: "odom"
-  ros_type_name: "nav_msgs/msg/Odometry"
-  gz_type_name: "gz.msgs.Odometry"
-  direction: "GZ_TO_ROS"
+- ros_topic_name: "odom"  # ROS话题名称，表示里程计数据
+  gz_topic_name: "odom"  # Gazebo话题名称，表示里程计数据
+  ros_type_name: "nav_msgs/msg/Odometry"  # ROS消息类型，用于表示里程计数据（如位置、速度、姿态等）
+  gz_type_name: "gz.msgs.Odometry"  # Gazebo消息类型，用于表示里程计数据
+  direction: "GZ_TO_ROS"  # 数据传输方向，"GZ_TO_ROS"表示从Gazebo到ROS
 
-- ros_topic_name: "cmd_vel"
-  gz_topic_name: "cmd_vel"
-  ros_type_name: "geometry_msgs/msg/Twist"
-  gz_type_name: "gz.msgs.Twist"
-  direction: "ROS_TO_GZ"
+- ros_topic_name: "cmd_vel"  # ROS话题名称，通常用于发送机器人运动命令
+  gz_topic_name: "cmd_vel"  # Gazebo话题名称，接收运动命令
+  ros_type_name: "geometry_msgs/msg/Twist"  # ROS消息类型，用于表示机器人运动命令（线速度和角速度）
+  gz_type_name: "gz.msgs.Twist"  # Gazebo消息类型，用于表示机器人运动命令
+  direction: "ROS_TO_GZ"  # 数据传输方向，"ROS_TO_GZ"表示从ROS到Gazebo
 
-- ros_topic_name: "scan"
-  gz_topic_name: "scan"
-  ros_type_name: "sensor_msgs/msg/LaserScan"
-  gz_type_name: "gz.msgs.LaserScan"
-  direction: "GZ_TO_ROS"
+- ros_topic_name: "scan"  # ROS话题名称，表示激光扫描数据
+  gz_topic_name: "scan"  # Gazebo话题名称，表示激光扫描数据
+  ros_type_name: "sensor_msgs/msg/LaserScan"  # ROS消息类型，用于表示激光扫描数据（包括距离、角度等信息）
+  gz_type_name: "gz.msgs.LaserScan"  # Gazebo消息类型，用于表示激光扫描数据
+  direction: "GZ_TO_ROS"  # 数据传输方向，"GZ_TO_ROS"表示从Gazebo到ROS
 
-- ros_topic_name: "scan/points"
-  gz_topic_name: "scan/points"
-  ros_type_name: "sensor_msgs/msg/PointCloud2"
-  gz_type_name: "gz.msgs.PointCloudPacked"
-  direction: "GZ_TO_ROS"
+- ros_topic_name: "scan/points"  # ROS话题名称，表示激光点云数据
+  gz_topic_name: "scan/points"  # Gazebo话题名称，表示激光点云数据
+  ros_type_name: "sensor_msgs/msg/PointCloud2"  # ROS消息类型，用于表示激光点云数据（3D点云数据）
+  gz_type_name: "gz.msgs.PointCloudPacked"  # Gazebo消息类型，用于表示打包的激光点云数据
+  direction: "GZ_TO_ROS"  # 数据传输方向，"GZ_TO_ROS"表示从Gazebo到ROS
 
-- ros_topic_name: "imu"
-  gz_topic_name: "imu"
-  ros_type_name: "sensor_msgs/msg/Imu"
-  gz_type_name: "gz.msgs.IMU"
-  direction: "GZ_TO_ROS"
+- ros_topic_name: "imu"  # ROS话题名称，表示惯性测量单元（IMU）数据
+  gz_topic_name: "imu"  # Gazebo话题名称，表示IMU数据
+  ros_type_name: "sensor_msgs/msg/Imu"  # ROS消息类型，用于表示IMU数据（加速度、角速度、姿态等）
+  gz_type_name: "gz.msgs.IMU"  # Gazebo消息类型，用于表示IMU数据
+  direction: "GZ_TO_ROS"  # 数据传输方向，"GZ_TO_ROS"表示从Gazebo到ROS
