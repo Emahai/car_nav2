@@ -19,13 +19,7 @@ Make sure to let Gazebo know about their location by running:
 
     export GZ_SIM_RESOURCE_PATH=~/gazebo_models
 
-3.Download a package in the `car_nav2` folder that can enable the recording of the robot's motion path.
-    
-    git clone https://github.com/MOGI-ROS/mogi_trajectory_server
-
-If you don't need this, you can comment out the line  `launchDescriptionObject.add_action(trajectory_node)`  at the end of the `navigation_with_slam.launch.py` file.
-
-4.Build the package and run:
+3.Build the package and run:
     
     colcon build
     .install/setup.bash
