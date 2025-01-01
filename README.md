@@ -22,13 +22,13 @@ Make sure to let Gazebo know about their location by running:
 3.Build the package and run:
     
     colcon build
-    .install/setup.bash
+    . install/setup.bash
     ros2 launch car_nav2 spawn_robot.launch.py
 
 Open a new terminal and run:
     
     export GZ_SIM_RESOURCE_PATH=~/gazebo_models
-    .install/setup.bash
+    . install/setup.bash
     ros2 launch car_nav2 navigation_with_slam.launch.py
 
 You can use the `2D goal pose` in the RViz2 toolbar to control the robot's movement and mapping. The robot will automatically plan the path.
