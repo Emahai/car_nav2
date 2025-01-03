@@ -32,3 +32,5 @@ Open a new terminal and run:
     ros2 launch car_nav2 navigation_with_slam.launch.py
 
 You can use the `2D goal pose` in the RViz2 toolbar to control the robot's movement and mapping. The robot will automatically plan the path.
+
+You can also click the `+` on rviz2 to add the `NAV2 Goal` tool. Then, click on the `Waypoint/NavThrough Poses Mode` under the Nav2 plugin. You can use the `Nav2 Goal` to set multiple waypoints in sequence. By clicking the `StartWaypoint Following` at the bottom, you can start waypoint navigation, and the robot will move towards the preset target locations in order.
