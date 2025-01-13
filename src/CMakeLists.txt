@@ -30,6 +30,7 @@ install(DIRECTORY
   urdf
   meshes
   config
+  maps
   DESTINATION share/${PROJECT_NAME}
 )
 
