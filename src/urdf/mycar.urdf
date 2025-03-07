@@ -2,27 +2,21 @@
 
 <robot name="mycar" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- 包含Gazebo插件的文件，用于模拟物理属性 -->
   <xacro:include filename="$(find car_nav2)/urdf/mycar.gazebo" />
 
-  <!-- 包含RViz中的颜色定义文件，用于可视化配置 -->
   <xacro:include filename="$(find car_nav2)/urdf/materials.xacro" />
 
-  <!-- 定义机器人底盘的参考点（base_footprint），用于标识机器人在平面上的位置 -->
   <link name="base_footprint"></link>
 
-  <!-- 将base_footprint与base_link通过固定关节连接，base_link为机器人底盘的实际链接 -->
   <joint name="base_footprint_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <parent link="base_footprint"/>
     <child link="base_link" />
   </joint>
 
-  <!-- 定义机器人底盘（base_link）的属性，包括惯性、碰撞模型和视觉模型 -->
   <link name='base_link'>
     <pose>0 0 0.1 0 0 0</pose>
 
-    <!-- 定义惯性属性，用于物理模拟中的质量分布 -->
     <inertial>
       <mass value="15.0"/>
       <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
@@ -33,7 +27,6 @@
       />
     </inertial>
 
-    <!-- 定义底盘的碰撞模型，用于物理引擎的碰撞检测 -->
     <collision name='collision'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/>
       <geometry>
@@ -41,7 +34,6 @@
       </geometry>
     </collision>
 
-    <!-- 定义底盘的视觉模型，用于可视化展示 -->
     <visual name='base_link_visual'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/>
       <geometry>
@@ -49,7 +41,6 @@
       </geometry>
     </visual>
 
-    <!-- 定义后轮支撑点的碰撞模型和视觉模型 -->
     <collision name='rear_caster_collision'>
       <origin xyz="-0.15 0 -0.05" rpy=" 0 0 0"/>
       <geometry>
@@ -64,7 +55,6 @@
       </geometry>
     </visual>
 
-    <!-- 定义前轮支撑点的碰撞模型和视觉模型 -->
     <collision name='front_caster_collision'>
       <origin xyz="0.15 0 -0.05" rpy=" 0 0 0"/>
       <geometry>
@@ -81,7 +71,6 @@
 
   </link>
 
-  <!-- 定义左轮的关节和链接 -->
   <joint type="continuous" name="left_wheel_joint">
     <origin xyz="0 0.15 0" rpy="0 0 0"/>
     <child link="left_wheel"/>
@@ -92,7 +81,6 @@
   </joint>
 
   <link name='left_wheel'>
-    <!-- 定义左轮的惯性属性 -->
     <inertial>
       <mass value="5.0"/>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
@@ -103,7 +91,6 @@
       />
     </inertial>
 
-    <!-- 定义左轮的碰撞模型 -->
     <collision>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
@@ -111,7 +98,6 @@
       </geometry>
     </collision>
 
-    <!-- 定义左轮的视觉模型 -->
     <visual name='left_wheel_visual'>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
@@ -120,7 +106,6 @@
     </visual>
   </link>
 
-  <!-- 定义右轮的关节和链接 -->
   <joint type="continuous" name="right_wheel_joint">
     <origin xyz="0 -0.15 0" rpy="0 0 0"/>
     <child link="right_wheel"/>
@@ -131,7 +116,6 @@
   </joint>
 
   <link name='right_wheel'>
-    <!-- 定义右轮的惯性属性 -->
     <inertial>
       <mass value="5.0"/>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
@@ -142,7 +126,6 @@
       />
     </inertial>
 
-    <!-- 定义右轮的碰撞模型 -->
     <collision>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
@@ -150,7 +133,6 @@
       </geometry>
     </collision>
 
-    <!-- 定义右轮的视觉模型 -->
     <visual name='right_wheel_visual'>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
@@ -159,7 +141,6 @@
     </visual>
   </link>
 
-  <!-- 定义Gazebo物理参数，包括摩擦力和其他动态属性 -->
   <gazebo reference="left_wheel">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
@@ -183,7 +164,6 @@
     <mu2>0.000002</mu2>
   </gazebo>
 
-  <!-- 定义IMU传感器的固定关节 -->
   <joint name="imu_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <parent link="base_link"/>
@@ -193,7 +173,7 @@
   <link name="imu_link">
   </link>
 
-  <!-- 定义激光雷达（Lidar）的固定关节和属性 -->
+  <!-- Lidar -->
   <joint type="fixed" name="scan_joint">
     <origin xyz="0.0 0 0.15" rpy="0 0 0"/>
     <child link="scan_link"/>
@@ -202,7 +182,6 @@
   </joint>
 
   <link name='scan_link'>
-    <!-- 定义激光雷达的惯性属性 -->
     <inertial>
       <mass value="1e-5"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -213,7 +192,6 @@
       />
     </inertial>
 
-    <!-- 定义激光雷达的碰撞模型 -->
     <collision name='collision'>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
@@ -221,7 +199,6 @@
       </geometry>
     </collision>
 
-    <!-- 定义激光雷达的视觉模型 -->
     <visual name='scan_link_visual'>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
@@ -231,7 +208,6 @@
 
   </link>
 
-  <!-- Gazebo中的激光雷达属性配置 -->
   <gazebo reference="scan_link">
     <selfCollide>false</selfCollide>
     <mu1 value="0.05" />
